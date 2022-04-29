@@ -8,7 +8,7 @@ safeDescribe("#POST readers", () => {
   let readerIdCreated;
 
   after(async () => {
-    await deleteReader({ artistId: readerIdCreated });
+    await deleteReader({ readerId: readerIdCreated });
   });
 
   it("creates a new reader in the database", async () => {

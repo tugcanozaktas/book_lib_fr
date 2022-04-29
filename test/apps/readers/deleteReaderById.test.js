@@ -9,8 +9,8 @@ safeDescribe("DELETE /readers/:readerId", () => {
 
   before(async () => {
     readerIdToDelete = await createReader({
-      name: "l'impetrarice",
-      genre: "french touch"
+      name: "John Smith",
+      genre: "Horror"
     });
   });
 

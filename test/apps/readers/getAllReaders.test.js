@@ -4,18 +4,40 @@ const router = require("~root/app");
 const safeDescribe = require("~test/utils/safeDescribe");
 
 safeDescribe("#GET readers", () => {
-  it("should select all readers", async () => {
+  before(async () => {});
+
+  it("should select all readers list", async () => {
     const response = await request(router)
       .get("/readers")
       .send();
 
     expect(response.statusCode).to.equal(201);
     expect(response.body).to.eql({
-      artists: [
-        { readerId: 1, name: "John Smith", genre: "Horror" },
-        { readerId: 2, name: "Kate Mar", genre: "Novel" },
-        { readerId: 3, name: "James Luce", genre: "Romantic" }
+      readers: [
+        { genre: "Horror", name: "John Smith", readerId: 1 },
+        { genre: "Novel", name: "Kate Mar", readerId: 2 },
+        { genre: "Romantic", name: "James Luce", readerId: 3 }
       ]
     });
   });
 });
+
+// {
+//     "readers": [
+//       {
+//       "genre": "Horror"
+//         "name": "John Smith"
+//         "readerId": 1
+//       }
+//       {
+//         "genre": "Novel"
+//         "name": "Kate Mar"
+//         "readerId": 2
+//       }
+//       {
+//         "genre": "Romantic"
+//         "name": "James Luce"
+//         "readerId": 3
+//       }
+//     ]
+//   }

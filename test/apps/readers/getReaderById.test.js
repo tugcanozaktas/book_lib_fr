@@ -4,7 +4,7 @@ const router = require("~root/app");
 const safeDescribe = require("~test/utils/safeDescribe");
 
 safeDescribe("#GET /reader/:readerId", () => {
-  const readerId = 1;
+  const readerId = 2;
 
   it("should select reader by readerId", async () => {
     const res = await request(router)
@@ -12,11 +12,11 @@ safeDescribe("#GET /reader/:readerId", () => {
       .send();
     expect(res.statusCode).to.equal(201);
     expect(res.body).to.eql({
-      artist: [
+      reader: [
         {
-          artistId: 1,
-          genre: "Horror",
-          name: "John Smith"
+          readerId: 2,
+          genre: "Novel",
+          name: "Kate Mar"
         }
       ]
     });
