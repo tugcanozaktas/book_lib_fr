@@ -11,12 +11,12 @@ safeDescribe("#PATCH reader by readerId", () => {
   after(async () => {
     await updateReaderById({
       readerId,
-      name: "Charlotte",
+      name: "John Smith",
       genre: "Horror"
     });
   });
 
-  xit("updates reader name by id", async () => {
+  it("updates reader name by id", async () => {
     const response = await request(router)
       .patch(`/readers/${readerId}`)
       .send({
@@ -24,7 +24,9 @@ safeDescribe("#PATCH reader by readerId", () => {
       });
     expect(response.status).to.equal(201);
     const result = await selectReaderById({ readerId });
-    expect(result).to.eql([{ readerId: 1, name: "Charlotte", genre: "Novel" }]);
+    expect(result).to.eql([
+      { readerId: 1, name: "Charlotte", genre: "Horror" }
+    ]);
   });
 
   it("updates reader genre by id", async () => {

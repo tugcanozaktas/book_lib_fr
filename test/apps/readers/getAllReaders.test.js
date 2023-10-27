@@ -14,9 +14,24 @@ safeDescribe("#GET readers", () => {
     expect(response.statusCode).to.equal(201);
     expect(response.body).to.eql({
       readers: [
-        { genre: "Horror", name: "John Smith", readerId: 1 },
-        { genre: "Novel", name: "Kate Mar", readerId: 2 },
-        { genre: "Romantic", name: "James Luce", readerId: 3 }
+        {
+          email: "johnsmith@gmail.com",
+          genre: "Horror",
+          name: "John Smith",
+          readerId: 1
+        },
+        {
+          email: "katemar@gmail.com",
+          genre: "Novel",
+          name: "Kate Mar",
+          readerId: 2
+        },
+        {
+          email: "jamesluce@gmail.com",
+          genre: "Romantic",
+          name: "James Luce",
+          readerId: 3
+        }
       ]
     });
   });

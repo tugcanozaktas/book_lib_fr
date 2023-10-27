@@ -1,7 +1,7 @@
 const insertReader = require("./queries/insertReader");
 
-const createReader = async ({ name, genre }) => {
-  const readerId = await insertReader({ name, genre });
+const createReader = async ({ name, genre, email, password }) => {
+  const readerId = await insertReader({ name, genre, email, password });
   return { readerId };
 };
 

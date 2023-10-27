@@ -14,7 +14,7 @@ const updateReaderById = ({ readerId, genre = null, name = null }) => {
   if (updates.length !== 0) {
     return submitQuery`
     UPDATE 
-      Reader
+      Readers
     SET
       ${updates.reduce(sqlReduce)}
     WHERE

@@ -1,9 +1,9 @@
 const selectAllReaders = require("./queries/selectAllReaders");
 
 const fetchAllReaders = async () => {
-  const reader = await selectAllReaders();
+  const readers = await selectAllReaders();
 
-  return { reader };
+  return { readers };
 };
 
 module.exports = fetchAllReaders;

@@ -3,11 +3,13 @@ const handleAPIError = require("~root/utils/handleAPIError");
 
 const patchReaderById = async (req, res) => {
   const { readerId } = req.params;
-  const { genre, name } = req.body;
+  const { genre, name, email, password } = req.body;
 
   try {
     const { reader } = await modifyReaderById({
       readerId,
+      email,
+      password,
       genre,
       name
     });

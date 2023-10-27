@@ -16,7 +16,9 @@ safeDescribe("#POST readers", () => {
       .post("/readers")
       .send({
         name: "Jane Doe",
-        genre: "Bio"
+        genre: "Bio",
+        email: "janedoe@gmail.com",
+        password: "doedoe12"
       });
 
     readerIdCreated = response.body.readerId;

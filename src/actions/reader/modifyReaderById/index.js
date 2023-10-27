@@ -1,8 +1,10 @@
 const updateReaderById = require("./queries/updateReaderById");
 
-const modifyReaderById = async ({ readerId, genre, name }) => {
+const modifyReaderById = async ({ readerId, email, password, genre, name }) => {
   const reader = await updateReaderById({
     readerId,
+    email,
+    password,
     genre,
     name
   });

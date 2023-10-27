@@ -16,7 +16,8 @@ safeDescribe("#GET /reader/:readerId", () => {
         {
           readerId: 2,
           genre: "Novel",
-          name: "Kate Mar"
+          name: "Kate Mar",
+          email: "katemar@gmail.com"
         }
       ]
     });

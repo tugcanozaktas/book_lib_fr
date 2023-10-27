@@ -1,7 +1,19 @@
 const { submitQuery, sql, sqlReduce } = require("~root/lib/database");
 
-const updateReaderById = ({ readerId, genre = null, name = null }) => {
+const updateReaderById = ({
+  readerId,
+  email = null,
+  password = null,
+  genre = null,
+  name = null
+}) => {
   const updates = [];
+  if (email !== null) {
+    updates.push(sql`email = ${email}`);
+  }
+  if (password !== null) {
+    updates.push(sql`password = ${password}`);
+  }
 
   if (genre !== null) {
     updates.push(sql`genre = ${genre}`);
