@@ -30,3 +30,12 @@ INSERT INTO Readers (name, genre, email, password)
 VALUES ("Kate Mar", "Novel", "katemar@gmail.com", "marmar12");
 INSERT INTO Readers (name, genre, email, password)
 VALUES ("James Luce", "Romantic", "jamesluce@gmail.com", "luceluce12");
+
+INSERT INTO Book (ISBN, title, author, genre )
+VALUES (1526617161, "Court of Mist and Fury", "Sarah J. Maas", "Philosophical");
+INSERT INTO Book (ISBN, title, author, genre )
+VALUES (9022543129, "Een Hoed Van Lucht", "Terry Pratchett", "Fantasy");
+INSERT INTO Book (ISBN, title, author, genre )
+VALUES (0375751548, "Swann's way", "Marcel Proust", "Novel");
+INSERT INTO Book (ISBN, title, author, genre )
+VALUES (0553381687, "A Game of Thrones", "George R. R. Martin", "Exploratory");
