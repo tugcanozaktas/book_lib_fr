@@ -1,4 +1,5 @@
 const express = require("express");
+const { body, param, validationResult } = require("express-validator");
 
 const postLogin = require("./controllers/users/login");
 const postUser = require("./controllers/users/register");
@@ -32,9 +33,73 @@ router.get("/user-types", getUserTypes);
 // Readers //
 
 router.get("/readers", getAllReaders);
-router.post("/readers", postReader);
 router.get("/readers/:readerId", getReaderById);
-router.patch("/readers/:readerId", updateReaderById);
+
+router.post(
+  "/readers",
+  [
+    body("name", "must be filled")
+      .notEmpty()
+      .isString(),
+    body("genre", "must be a string")
+      .optional()
+      .isString(),
+    body("email")
+      .notEmpty()
+      .isEmail()
+      .withMessage("must be a valid email address"),
+    body("password")
+      .notEmpty()
+      .isString()
+      .isLength({ min: 8 })
+      .withMessage("must be at least 8 characters")
+  ],
+  // eslint-disable-next-line consistent-return
+  async (req, res) => {
+    // Check for validation errors
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      // Extract field-specific error messages
+      const errorMessages = {};
+      errors.array().forEach(error => {
+        const fieldName = error.path;
+        errorMessages[fieldName] = error.msg;
+      });
+
+      // Send a custom error response with field-specific messages
+      return res.status(400).json({ errors: errorMessages });
+    }
+
+    // If there are no validation errors, continue with your logic
+    try {
+      const result = await postReader(req, res); // Corrected function name
+      res.status(200).json(result);
+    } catch (err) {
+      // Handle other errors
+      res.status(500).json({ error: "Internal Server Error" });
+    }
+  },
+  postReader
+);
+router.patch(
+  "/readers/:readerId",
+  // Add validation for update reader route
+  [
+    param("readerId")
+      .isInt()
+      .toInt(),
+    body("name")
+      .optional()
+      .isString(),
+    body("genre")
+      .optional()
+      .isString()
+    // Add more validation rules as needed
+  ],
+
+  updateReaderById
+);
+
 router.delete("/readers/:readerId", deleteReader);
 
 module.exports = router;
